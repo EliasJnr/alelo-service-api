@@ -31,14 +31,14 @@ public class UserController {
 	@Autowired
 	private UserService userService;
 
-	@ApiOperation(value = "Save user")
+	@ApiOperation(value = "Salvar")
 	@PostMapping
 	public ResponseEntity<User> save(@RequestBody @Valid UserSavedto userdto) {
 		User createdUser = userService.save(userdto.transformToUser());
 		return ResponseEntity.status(HttpStatus.CREATED).body(createdUser);
 	}
 
-	@ApiOperation(value = "Edit user")
+	@ApiOperation(value = "Editar")
 	@PutMapping("/{id}")
 	public ResponseEntity<User> update(@PathVariable(name = "id") Long id, @Valid @RequestBody UserSavedto userdto) {
 		User user = userdto.transformToUser();
@@ -47,14 +47,14 @@ public class UserController {
 		return ResponseEntity.status(HttpStatus.OK).body(updatedUser);
 	}
 
-	@ApiOperation(value = "Get user by id")
+	@ApiOperation(value = "Busca por id")
 	@GetMapping("/{id}")
 	public ResponseEntity<User> getById(@PathVariable("id") Long id) {
 		User user = userService.getById(id);
 		return ResponseEntity.ok(user);
 	}
 
-	@ApiOperation(value = "Get listAll pageable")
+	@ApiOperation(value = "Lista todos com paginação")
 	@GetMapping
 	public ResponseEntity<PageModel<User>> listAll(@RequestParam(value = "page", defaultValue = "0") int page,
 			@RequestParam(value = "size", defaultValue = "10") int size) {
