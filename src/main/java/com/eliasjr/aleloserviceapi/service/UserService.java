@@ -51,4 +51,9 @@ public class UserService {
 
 		return new PageModel<>((int) page.getTotalElements(), page.getSize(), page.getTotalPages(), page.getContent());
 	}
+	
+	public void deleteById(Long id) {
+		User user = getById(id);
+		userRepository.delete(user);
+	}
 }
