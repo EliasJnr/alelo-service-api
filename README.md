@@ -18,9 +18,9 @@ http://localhost:8080/swagger-ui.html
 # Acesso ao banco H2
 http://localhost:8080/h2-console
 
-JDBC_URL: jdbc:h2:mem:testdb
-user: sa
-password: password
+- JDBC_URL: jdbc:h2:mem:testdb
+- user: sa
+- password: password
 
 
 
